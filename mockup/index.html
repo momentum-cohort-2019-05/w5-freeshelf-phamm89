@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+  <title>Freeshelf</title>
+</head>
+
+<body class="sans-serif pv2 ph4">
+  <header class="flex items-center justify-between bg-green white ph3">
+    <div id="title">
+      <h1 class="white">Freeshelf</h1>
+    </div>
+    <div id="account-menu">
+      <a class="washed-blue" href="#">Login</a> | <a class="washed-blue" href="#">Register</a>
+    </div>
+  </header>
+  <nav id="category-nav" class="flex items-center">
+    <div>
+      Books by category:
+    </div>
+    <ul class="list ml1 pa0 flex flex-wrap">
+      <li class="mr2 pr2 bw1 br"><a href="#">CSS</a></li>
+      <li class="mr2 pr2 bw1 br"><a href="#">HTML</a></li>
+      <li class="mr2 pr2 bw1 br"><a href="#">JavaScript</a></li>
+      <li class="mr2 pr2 bw1 br"><a href="#">Python</a></li>
+      <li class=""><a href="#">R</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section id="books">
+      <h2>Recently added books</h2>
+      <div class="mv3">
+        <div class="normal f3"><a href="http://greenteapress.com/thinkpython2/html/index.html">Think Python: How to
+            Think
+            Like a Computer
+            Scientist</a> <span class="f4">by Allen Downey</span></div>
+        <p class="lh-copy">
+          <i>Think Python</i> is an introduction to Python programming for beginners. It starts with basic concepts of
+          programming, and is
+          carefully designed to define all terms when they are first used and to develop each new concept in a logical
+          progression.
+          Larger pieces, like recursion and object-oriented programming are divided into a sequence of smaller steps
+          and introduced
+          over the course of several chapters.
+        </p>
+        <div class="flex">
+          <div class="mr2 pr2 bw1 br green">
+            Favorited 4 times
+          </div>
+          <div class="mr2 pr2 bw1 br">
+            added 2018-11-07
+          </div>
+          <div>
+            Category: <a href="#">Python</a>
+          </div>
+        </div>
+      </div>
+      <div class="mv3">
+        <div class="normal f3">
+          <a href="https://automatetheboringstuff.com/">Automate the Boring Stuff</a> <span class="f4">by Al Sweigart</span></div>
+        <p class="lh-copy">
+          If you've ever spent hours renaming files or updating hundreds of spreadsheet cells, you know how tedious
+          tasks like these can be. But what if you could have your computer do them for you? In <i>Automate the Boring
+            Stuff with Python</i>, you'll learn how to use Python to write programs that do in minutes what would take
+          you hours to do by hand-no prior programming experience required.
+        </p>
+        <div class="flex">
+          <div class="mr2 pr2 bw1 br green">
+            Favorited 7 times
+          </div>
+          <div class="mr2 pr2 bw1 br">
+            added 2018-10-30
+          </div>
+          <div>
+            Category: <a href="#">Python</a>
+          </div>
+        </div>
+      </div>
+      <div class="mv3 flex">
+        <div class="w-75">
+          <p class="normal f3"><a href="https://html5forwebdesigners.com/">
+              HTML5 for Web Designers</a> <span class="f4">by Jeremy Keith and Rachel Andrew</span></p>
+          <p class="lh-copy">
+            HTML5 isn’t as confusing as it once was, but it still isn’t straightforward. It’s an evolutionary, rather
+            than revolutionary, change in the ongoing story of markup—and if you’re currently creating websites with
+            any
+            version of HTML, you’re already using HTML5. Harness the power of this essential evolving spec with help
+            from
+            Jeremy Keith and Rachel Andrew.
+          </p>
+          <div class="flex">
+            <div class="mr2 pr2 bw1 br">
+              added 2018-10-15
+            </div>
+            <div>
+              Category: <a href="#">HTML</a>
+            </div>
+          </div>
+        </div>
+        <div class="w-25 ml5">
+          <img src="cover.png">
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
