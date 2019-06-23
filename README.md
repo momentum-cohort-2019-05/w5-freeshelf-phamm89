@@ -17,10 +17,10 @@ Your first goal should be creating a Book model and showing an index of all book
 - Books have, at a minimum, a title, author, description, URL, slug, and date added to the database.
 - Book URLs should be unique.
 - Admins can add, edit, and delete books.
-- You should have initial data for books (only a few books are necessary, but it's up to you how many you seed).
+- You should have initial data for books (a CSV is provided, but you can edit it to fit your data).
 - Books should be in order with the most recently added at the top.
 
-To load some initial books, you can [create a data migration](https://docs.djangoproject.com/en/2.1/topics/migrations/#data-migrations) or [use fixtures](https://docs.djangoproject.com/en/2.1/howto/initial-data/#providing-data-with-fixtures).
+To load some initial books, you can [create a data migration](https://docs.djangoproject.com/en/2.1/topics/migrations/#data-migrations).
 
 #### Stretch goals
 
