@@ -1,4 +1,4 @@
-title,author,url,description,Category
+title,author,url,description,category
 Eloquent JavaScript,Marijn Haverbeke,https://eloquentjavascript.net/,"This is a book about JavaScript, programming, and the wonders of the digital.",Javascript
 Think Python,Allen Downey,https://greenteapress.com/wp/think-python-2e/,"Think Python is an introduction to Python programming for beginners. It starts with basic concepts of programming, and is carefully designed to define all terms when they are first used and to develop each new concept in a logical progression.",Python
 Automate the Boring Stuff,Al Sweigart,https://automatetheboringstuff.com/,"In Automate the Boring Stuff with Python, you'll learn how to use Python to write programs that do in minutes what would take you hours to do by hand-no prior programming experience required.",Python
