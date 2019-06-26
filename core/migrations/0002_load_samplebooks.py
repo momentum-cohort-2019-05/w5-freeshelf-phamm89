@@ -17,9 +17,15 @@ def load_books(apps, schema_editor):
 
     with open(filename) as file:
         # Read CSV
-        reader = csv.reader(csv_file)
-        # Iterate over header
-        header = reader.next()
+        reader = csv.DictReader(csv_file)
 
         # Create for loop to read through data
+        for row in reader:
+                # Look up author or create one if necessary
+                book_author, _ = BookAuthor.objects.get_or_create(name=row['author'])
+                book_author.save()
+
+                book = Book(
+
+                )
 
