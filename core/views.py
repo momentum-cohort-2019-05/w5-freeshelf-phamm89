@@ -1,3 +1,27 @@
 from django.shortcuts import render
+from core.models import Category, Book, BookAuthor
 
-# Create your views here.
+
+# Created views
+
+def index(request):
+    """View function for home page of site."""
+
+    # Generate counts of some of the main objects
+    num_books = Book.objects.all().count()
+    num_authors = BookAuthor.objects.all().count()
+    num_categories = Category.objects.all().count()
+
+    # Show most recently added books
+    recently_added_books = Book.objects.order_by('-db_date_added')[:3]
+    
+    
+    context = {
+        'num_books': num_books,
+        'num_authors': num_authors,
+        'num_categories': num_categories,
+        'recently_added_books': recently_added_books
+    }
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, 'index.html', context=context)

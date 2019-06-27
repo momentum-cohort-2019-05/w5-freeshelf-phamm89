@@ -28,15 +28,17 @@ class Book(models.Model):
     # Foreign Key used because book can only have one author, but authors can have multiple books
     book_author = models.ForeignKey('BookAuthor', on_delete=models.SET_NULL, null=True)
     
+    # ManyToManyField used because category can contain many books. Books can belong to multiple categories.
+    book_category = models.ManyToManyField(Category, help_text='Select categories for this book')
+
     book_url = models.URLField(max_length=200, unique=True, help_text='Enter the unique URL of the book.')
     book_description = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
     db_date_added = models.DateTimeField(auto_now_add=True)
-    
-    # ManyToManyField used because category can contain many books. Books can belong to multiple categories.
-    book_category = models.ManyToManyField(Category, help_text='Select categories for this book')
+         
     
     class Meta:
         ordering = ['-db_date_added']
+    
 
     def __str__(self):
         """String for representing the Model object."""

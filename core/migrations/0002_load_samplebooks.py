@@ -25,11 +25,11 @@ def load_books(apps, schema_editor):
         # Create for loop to read through data
         for row in reader:
                 # Retrieve author or create one if necessary
-                book_author, created = BookAuthor.objects.get_or_create(name=row['author'])
+                book_author, created = BookAuthor.objects.get_or_create(book_author=row['author'])
                 book_author.save()
 
                 # Retrieve category or create one if necessary
-                book_category, created = Category.objects.get_or_create(name=row['category'])
+                book_category, created = Category.objects.get_or_create(book_category=row['category'])
                 book_category.save()
 
                 # Retrieve book fields
@@ -37,11 +37,11 @@ def load_books(apps, schema_editor):
                         book_title = row['title'],
                         book_author = book_author,
                         book_url = row['url'],
-                        book_description = row['description'],
-                        book_category = book_category,
+                        book_description = row['description'],  
                         db_date_added = datetime.datetime.now()
                 )
                 book.save()
+                book.book_category.set([book_category])
 
 
 # Migrations are not reversible; create function to reverse migration
@@ -58,7 +58,7 @@ def reverse_load(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0001_initial.'),
+        ('core', '0001_initial'),
     ]
 
     operations = [migrations.RunPython(load_books, reverse_load)]
