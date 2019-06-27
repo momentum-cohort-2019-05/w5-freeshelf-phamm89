@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Freeshelf</h1>
+  <p>Welcome to Freeshelf, a website developed by <em>Michael Pham</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>Freeshelf has the following record counts:</p>
+  <ul>
+    <li><strong>Books:</strong> {{ num_books }}</li>
+    <li><strong>Authors:</strong> {{ num_authors }}</li>
+    <li><strong>Categories:</strong> {{ num_categories }}</li>
+    <li><strong>Most Recently Added Books:</strong> {{ recently_added_books }}</li>
+  </ul>
+{% endblock %}
+
