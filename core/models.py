@@ -58,3 +58,17 @@ class BookAuthor(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.book_author
+
+
+class Favorite(models.Model):
+    """Model representing a user selecting a book as a favorite"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    favorited_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-favorited_at']
+    
+    def __str__(self):
+        """String for representing the Favorite object."""
+        return f"{self.user.username} - {self.book.book_title}"

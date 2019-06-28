@@ -1,7 +1,11 @@
-from django.shortcuts import render
-from core.models import Category, Book, BookAuthor
+from django.shortcuts import render, get_object_or_404, redirect
+from core.models import Category, Book, BookAuthor, Favorite
 from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.views.decorators.http import require_http_methods
+from django.http import HttpResponseRedirect
 
 
 # Created views
@@ -43,3 +47,4 @@ class CategoriesListView(generic.ListView):
 
 class CategoriesDetailView(generic.DetailView):
     model = Category
+

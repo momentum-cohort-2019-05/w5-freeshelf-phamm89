@@ -32,8 +32,7 @@
         {{ book.book_description }}
       </p>
       <p>
-        |  Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
-      </p>
+        Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
       </p>
       {% endfor %}
   </ul>
