@@ -15,7 +15,7 @@
       <h4>Books by Category: 
         {% if different_categories %}
           {% for category in different_categories %}
-              <a href="">{{ category.book_category }}</a>
+              <a href="{{ category.get_absolute_url }}">{{ category.book_category }}</a>
             {% if not forloop.last %} | {% endif %}
           {% endfor %}
         {% endif %}

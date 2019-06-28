@@ -25,6 +25,7 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/index/', permanent=True)),
     path('books/', core_views.BookListView.as_view(), name='books'),
     path('book/<int:pk>', core_views.BookDetailView.as_view(), name='book-detail'),
+    path('category/<int:pk>', core_views.CategoriesDetailView.as_view(), name='category-detail'),
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
 ]

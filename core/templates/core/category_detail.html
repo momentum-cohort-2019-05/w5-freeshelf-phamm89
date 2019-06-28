@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1><strong>Category:</strong> {{ category.book_category }}</h1>
+<h2>Books:</h2>
+<ul>
+    {% for book in category.book_set.all %}
+    <p><br>
+      <a href="{{ book.get_absolute_url }}">{{ book.book_title}}</a> by {{ book.book_author }}
+    <p>
+        {{ book.book_description }}
+    </p>
+    <p>
+      |  Added to Database: {{ book.db_date_added }}  
+    </p>
+    </p>
+    {% endfor %}   
+</ul>  
+{% endblock %}
