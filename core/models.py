@@ -11,6 +11,8 @@ class Category(models.Model):
     class Meta:
         """Plural name for category to override category+s"""
         verbose_name_plural = "categories"
+        
+        ordering = ['book_category']
 
     def __str__(self):
         """String for representing the Model object."""

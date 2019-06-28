@@ -23,6 +23,7 @@ from core import views as core_views
 urlpatterns = [
     path('', core_views.index, name='index'),
     path('', RedirectView.as_view(url='/index/', permanent=True)),
+    path('books/', core_views.BookListView.as_view(), name='books'),
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
 ]
