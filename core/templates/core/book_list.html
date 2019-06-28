@@ -3,12 +3,13 @@
 {% block content %}
 <h1>Freeshelf Book List:</h1>
 <ul>
-    {% for book in recently_added_books %}
+    {% for book in book_list %}
     <p><br>
-      <a href="{{ book.book_url }}">{{ book.book_title}}</a> by {{ book.book_author }}
+      <a href="{{ book.get_absolute_url }}">{{ book.book_title}}</a> by {{ book.book_author }}
     <p>
       |  Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
     </p>
     </p>
-    {% endfor %}     
+    {% endfor %}   
+</ul>  
 {% endblock %}

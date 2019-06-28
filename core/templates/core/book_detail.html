@@ -1,12 +1,12 @@
-{% extends "base_generic.html" %}
+{% extends "base.html" %}
 
 {% block content %}
   <h1>Title: {{ book.book_title }}</h1>
 
-  <p><strong>Author:</strong> <a href="">{{ book.book_author }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Author:</strong> {{ book.book_author }}</p> 
   <p><strong>Description:</strong> {{ book.book_description }}</p>
-  <p><strong>URL:</strong><a href="{{ book.book_url }}">{{ book.book_url }}</a></p>
-  <p><strong>Category:</strong>{{ book.book_category.get }}</p>  
+  <p><strong>URL:</strong><a href="{{ book.book_url }}"> {{ book.book_url }}</a></p>
+  <p><strong>Category:</strong> {{ book.book_category.get }}</p>  
 
   <!-- <div style="margin-left:20px;margin-top:20px">
     <h4>Copies</h4>

@@ -14,7 +14,7 @@ def index(request):
     num_categories = Category.objects.all().count()
 
     # Show most recently added books
-    recently_added_books = Book.objects.order_by('-db_date_added')
+    recently_added_books = Book.objects.order_by('-db_date_added')[:3]
     different_categories = Category.objects.all()
     
     
@@ -32,6 +32,7 @@ def index(request):
 
 class BookListView(generic.ListView):
     model = Book
+    
 
 class BookDetailView(generic.DetailView):
     model = Book
