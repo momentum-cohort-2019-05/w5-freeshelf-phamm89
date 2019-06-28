@@ -48,3 +48,8 @@ class CategoriesListView(generic.ListView):
 class CategoriesDetailView(generic.DetailView):
     model = Category
 
+
+@login_required
+def favorite_view(request, book_pk):
+    """View function for user to favorite or unfavorite a book."""
+    book = get_object_or_404(Book, pk=book_pk)
