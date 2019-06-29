@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1><strong>Category:</strong> {{ category.book_category }}</h1>
-<h2>Books:</h2>
+<header class="tc ph4">
+  <h2 class="mt1 mb0 f4 fw3 ttu tracked"><strong><emphasis>Books for {{ category.book_category }} Category:</emphasis></strong></h2>
 <ul>
+    <p class="f5 lh-copy measure">
     {% for book in category.book_set.all %}
     <p><br>
-      <a href="{{ book.get_absolute_url }}">{{ book.book_title}}</a> by {{ book.book_author }}
+      <div class="normal f3"><a href="{{ book.get_absolute_url }}">{{ book.book_title}}</a><span class="f4"> by {{ book.book_author }}</span></div>
     <p>
-        {{ book.book_description }}
+        <i>{{ book.book_description }}</i>
     </p>
     <p>
       |  Added to Database: {{ book.db_date_added }}  
