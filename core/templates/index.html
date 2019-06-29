@@ -26,14 +26,14 @@
   <h2>Most Recently Added Books:</h2>
   <ul>
       {% for book in recently_added_books %}
-      <p><br>
-        <a href="{{ book.book_url }}">{{ book.book_title}}</a> by {{ book.book_author }}
-      <p>
-        {{ book.book_description }}
-      </p>
-      <p>
-        Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
-      </p>
+        <p><br>
+          <a href="{{ book.book_url }}">{{ book.book_title}}</a> by {{ book.book_author }}
+        <p>
+          {{ book.book_description }}
+        </p>
+        <p>
+          Favorite  |   Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
+        </p>
       {% endfor %}
   </ul>
 {% endblock %}

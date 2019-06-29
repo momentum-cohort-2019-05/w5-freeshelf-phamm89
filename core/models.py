@@ -36,7 +36,9 @@ class Book(models.Model):
     book_url = models.URLField(max_length=200, unique=True, help_text='Enter the unique URL of the book.')
     book_description = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
     db_date_added = models.DateTimeField(auto_now_add=True)
-         
+    
+    # ManyToManyField used because favorite list can contain many books. 
+    book_favorite = models.ManyToManyField(User, through='Favorite', help_text='Mark favorite to add book to favorite list')
     
     class Meta:
         ordering = ['-db_date_added']
@@ -49,6 +51,9 @@ class Book(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a detail record for this book."""
         return reverse('book-detail', args=[str(self.id)])
+    
+    # def get_favorite_url(self):
+    #     return reverse('category-detail', args=(self.pk,))
 
 
 class BookAuthor(models.Model):

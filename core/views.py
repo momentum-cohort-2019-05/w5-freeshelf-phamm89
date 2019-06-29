@@ -48,8 +48,19 @@ class CategoriesListView(generic.ListView):
 class CategoriesDetailView(generic.DetailView):
     model = Category
 
-
+@require_http_methods(['POST'])
 @login_required
 def favorite_view(request, book_pk):
     """View function for user to favorite or unfavorite a book."""
     book = get_object_or_404(Book, pk=book_pk)
+
+    # Create the favorite list for user
+    favorite, created = request.user.favorite_set.get_or_create(book=book)
+
+    if created:
+        messages.success(request, f"You have added {book.book_title} to your favorites book list.")
+    else:
+        messages.info(request, f"You have removed {book.book_title} from your favorites book list.")
+        favorite.delete()
+    
+    return redirect('category-detail', pk=book_pk)
