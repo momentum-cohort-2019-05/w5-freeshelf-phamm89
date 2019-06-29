@@ -1,40 +1,49 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Freeshelf</h1>
-  <p>Welcome to Freeshelf, a website developed by <em>Michael Pham</em>!</p>
-  <br>
-  <p>Freeshelf has the following record counts:</p>
-  <ul>
-    <li><strong>Books:</strong> {{ num_books }}</li>
-    <li><strong>Authors:</strong> {{ num_authors }}</li>
-    <li><strong>Categories:</strong> {{ num_categories }}</li>
-  </ul>
-  <div>
-    <div class="category_list">
-      <h4>Books by Category: 
-        {% if different_categories %}
-          {% for category in different_categories %}
-              <a href="{{ category.get_absolute_url }}">{{ category.book_category }}</a>
-            {% if not forloop.last %} | {% endif %}
-          {% endfor %}
-        {% endif %}
-      </h4>
-    </div>
-  </div>
 
-  <h2>Most Recently Added Books:</h2>
-  <ul>
-      {% for book in recently_added_books %}
-        <p><br>
-          <a href="{{ book.book_url }}">{{ book.book_title}}</a> by {{ book.book_author }}
-        <p>
-          {{ book.book_description }}
-        </p>
-        <p>
-          Favorite  |   Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
-        </p>
-      {% endfor %}
-  </ul>
+<header class="tc ph4">
+    <div><br><br><br>
+    <h1 class="mt1 mb0 f4 fw3 ttu tracked">
+      Our Database Currently Contains:
+    </h1>
+    <h4 class="mt2 mb0 f6 fw4 ttu tracked">
+        <ul>
+            <p>{{ num_books }} Books</p>
+            <p>{{ num_authors }} Authors</p>
+            <p>{{ num_categories }} Programming Categories</p>
+        </ul>
+    </h4>
+    </div>
+  </header>
+  <header class="bg-white black-80 tc pv4 avenir">
+      <nav class="bt bb tc mw7 center mt4">
+          <h4>Books by Category: 
+              {% if different_categories %}
+                {% for category in different_categories %}
+                    <a class="f6 f5-l link bg-animate blue-80 hover-bg-blue dib pa3 ph4-l" href="{{ category.get_absolute_url }}">{{ category.book_category }}</a>
+                  {% if not forloop.last %} | {% endif %}
+                {% endfor %}
+              {% endif %}
+          </h4>
+      </nav>
+  <br><br>
+  <header class="tc ph4">
+    <h2 class="mt1 mb0 f4 fw3 ttu tracked"><strong><emphasis>Most Recently Added Books:</emphasis></strong></h2>
+    <ul>
+            <p class="f5 lh-copy measure">
+                {% for book in recently_added_books %}
+                <p><br>
+                  <div class="normal f3"><a href="{{ book.book_url }}">{{ book.book_title}}</a><span class="f4"> by {{ book.book_author }}</span></div>
+                <p>
+                  <i>{{ book.book_description }}</i>
+                </p>
+                <p>
+                  Favorite  |   Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
+                </p>
+              {% endfor %}
+            </p>
+    </ul>
+  </header>
 {% endblock %}
 
