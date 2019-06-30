@@ -38,9 +38,11 @@
                 <p>
                   <i>{{ book.book_description }}</i>
                 </p>
-                <p>
-                  Favorite  |   Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
-                </p>
+                {% if request.user.is_authenticated and request.user not in book.book_favorite.all %}
+                <a href="{% url 'favorite-book' book.pk %}?next={{ request.path }}">Add to Favorite Books</a>   |   Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
+                {% elif request.user.is_authenticated and request.user in book.book_favorite.all %}
+                <a href="{% url 'favorite-book' book.pk %}?next={{ request.path }}">Remove from Favorite Books</a>   |   Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
+                {% endif %}
               {% endfor %}
             </p>
     </ul>

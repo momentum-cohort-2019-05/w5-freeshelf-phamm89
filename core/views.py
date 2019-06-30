@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.decorators.http import require_http_methods
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 
 
 # Created views
@@ -48,19 +49,26 @@ class CategoriesListView(generic.ListView):
 class CategoriesDetailView(generic.DetailView):
     model = Category
 
-@require_http_methods(['POST'])
+
 @login_required
-def favorite_view(request, book_pk):
+def favorite_book(request, pk):
     """View function for user to favorite or unfavorite a book."""
-    book = get_object_or_404(Book, pk=book_pk)
-
-    # Create the favorite list for user
-    favorite, created = request.user.favorite_set.get_or_create(book=book)
-
-    if created:
-        messages.success(request, f"You have added {book.book_title} to your favorites book list.")
-    else:
-        messages.info(request, f"You have removed {book.book_title} from your favorites book list.")
-        favorite.delete()
+    book = get_object_or_404(Book, pk=pk)
     
-    return redirect('category-detail', pk=book_pk)
+    if request.method == 'GET':
+        if request.user in book.book_favorite.all():
+            book.book_favorite.remove(request.user)
+            messages.info(request, f"You have removed {book.book_title} from your favorites book list.")
+        else:
+            book.book_favorite.add(request.user)
+            messages.success(request, f"You have added {book.book_title} from your favorites book list.")
+            
+    return HttpResponseRedirect(request.GET.get("next"))
+
+
+@login_required
+def favorite_view(request):
+    """View function for user to view all books in favorite list."""
+    favorites_list = Favorite.objects.filter(user=request.user)
+
+    return render(request, 'core/favorites.html', {'favorites_list': favorites_list})

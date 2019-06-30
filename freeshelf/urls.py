@@ -25,7 +25,9 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/index/', permanent=True)),
     path('books/', core_views.BookListView.as_view(), name='books'),
     path('book/<int:pk>', core_views.BookDetailView.as_view(), name='book-detail'),
+    path('book/<int:pk>/favorite/', core_views.favorite_book, name='favorite-book'),
     path('category/<int:pk>', core_views.CategoriesDetailView.as_view(), name='category-detail'),
+    path('favorites/', core_views.favorite_view, name='favorites'),
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
 ]

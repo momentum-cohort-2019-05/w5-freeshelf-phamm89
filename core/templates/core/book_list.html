@@ -9,7 +9,11 @@
     <p><br>
       <div class="normal f3"><a href="{{ book.get_absolute_url }}">{{ book.book_title}}</a><span class="f4"> by {{ book.book_author }}</span></div>
     <p>
-      |  Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
+        {% if request.user.is_authenticated and request.user not in book.book_favorite.all %}
+        <a href="{% url 'favorite-book' book.pk %}?next={{ request.path }}">Add to Favorite Books</a>   |   Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
+        {% elif request.user.is_authenticated and request.user in book.book_favorite.all %}
+        <a href="{% url 'favorite-book' book.pk %}?next={{ request.path }}">Remove from Favorite Books</a>   |   Added to Database: {{ book.db_date_added }}  |  Category: {{ book.book_category.get }}
+        {% endif %}
     </p>
     </p>
     {% endfor %}   

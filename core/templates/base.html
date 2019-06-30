@@ -26,7 +26,7 @@
             <a class="f6 f5-l link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" href="{% url 'index' %}">Home</a>
             <a class="f6 f5-l link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l" href="{% url 'books' %}">All Books</a>
             {% if request.user.is_authenticated %}
-            Logged in as {{ request.user }} | <a class="f6 f5-l link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l" href="{% url 'auth_logout' %}">Logout</a>
+            Logged in as {{ request.user }}  |    <a href="{% url 'favorites' %}">View Favorite Books</a>    |   <a class="f6 f5-l link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l" href="{% url 'auth_logout' %}">Logout</a>
           {% else %}
             <a class="f6 f5-l link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l" href="{% url 'auth_login' %}">Login</a> |
             <a class="f6 f5-l link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l" href="{% url 'registration_register' %}">Register</a>

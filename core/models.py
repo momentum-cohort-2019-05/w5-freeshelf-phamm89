@@ -51,9 +51,6 @@ class Book(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a detail record for this book."""
         return reverse('book-detail', args=[str(self.id)])
-    
-    # def get_favorite_url(self):
-    #     return reverse('category-detail', args=(self.pk,))
 
 
 class BookAuthor(models.Model):
@@ -77,3 +74,5 @@ class Favorite(models.Model):
     def __str__(self):
         """String for representing the Favorite object."""
         return f"{self.user.username} - {self.book.book_title}"
+    
+    

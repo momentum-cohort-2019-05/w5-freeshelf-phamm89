@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<header class="tc ph4">
+        <h2 class="mt1 mb0 f4 fw3 ttu tracked"><strong><emphasis>Favorite Books:</emphasis></strong></h2>
+<ul>
+    {% if favorites_list %}
+    <p class="f5 lh-copy measure">
+      {% for favorite in favorites_list %} 
+      <p><br>
+        <div class="normal f3"><a href="{{ favorite.book.get_absolute_url }}">{{ favorite.book.book_title }}</a><span class="f4"> by {{ favorite.book.book_author }}</span></div>    
+      <p>
+      <a href="{% url 'favorite-book' favorite.book.pk %}?next={{ request.path }}">Remove Favorite Book</a>
+      {% endfor %}
+      </p></p></p>
+
+    {% else %}
+      <p>You haven't favorited any books.</p>
+    {% endif %}       
+{% endblock %}
